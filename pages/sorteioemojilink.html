@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Link com Emoji Clicável</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .emoji {
+            font-size: 100px; /* Tamanho do emoji */
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sorteio de Link com Emoji Clicável</h1>
+    <p>Clique no botão abaixo para sortear um link do Google e exibir um emoji clicável associado a ele.</p>
+    <button onclick="sortearLink()">Sortear Link</button>
+    <a id="emojiResultado" href="" target="_blank">
+        <span class="emoji" id="emoji"></span>
+    </a>
+</div>
+
+<script>
+    function sortearLink() {
+        // Lista de links e emojis associados (você pode adicionar mais links e emojis)
+        const linksComEmojis = [
+            {
+                link: "https://www.google.com/search?q=javascript",
+                emoji: "💻", // Emoji relacionado ao JavaScript
+            },
+            {
+                link: "https://www.google.com/search?q=html",
+                emoji: "🌐", // Emoji relacionado ao HTML
+            },
+            {
+                link: "https://www.google.com/search?q=css",
+                emoji: "🎨", // Emoji relacionado ao CSS
+            },
+            {
+                link: "https://www.google.com/search?q=react",
+                emoji: "⚛️", // Emoji relacionado ao React
+            },
+            {
+                link: "https://www.google.com/search?q=programação",
+                emoji: "🖥️", // Emoji relacionado à Programação
+            }
+        ];
+
+        // Sorteia um índice aleatório
+        const indiceAleatorio = Math.floor(Math.random() * linksComEmojis.length);
+
+        // Obtem o link e emoji sorteados
+        const sorteio = linksComEmojis[indiceAleatorio];
+
+        // Exibe apenas o emoji clicável
+        const emojiResultado = document.getElementById("emojiResultado");
+        const emoji = document.getElementById("emoji");
+
+        // Atualiza o link e o emoji
+        emojiResultado.href = sorteio.link; // Faz o emoji ser clicável e redirecionar para o link
+        emoji.innerHTML = sorteio.emoji; // Exibe o emoji sorteado
+    }
+</script>
+
+</body>
+</html>
