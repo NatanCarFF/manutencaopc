@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Link Aleatório</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sorteio de Link Aleatório</h1>
+    <p>Clique no botão abaixo para sortear um link aleatório do Google.</p>
+    <button onclick="sortearLink()">Sortear Link</button>
+    <p id="linkResultado"></p>
+</div>
+
+<script>
+    function sortearLink() {
+        // Lista de links do Google (você pode adicionar mais links)
+        const links = [
+            "https://www.google.com/search?q=javascript",
+            "https://www.google.com/search?q=html",
+            "https://www.google.com/search?q=css",
+            "https://www.google.com/search?q=react",
+            "https://www.google.com/search?q=programação",
+        ];
+
+        // Sorteia um índice aleatório
+        const indiceAleatorio = Math.floor(Math.random() * links.length);
+
+        // Exibe o link sorteado
+        const linkSorteado = links[indiceAleatorio];
+        const resultado = document.getElementById("linkResultado");
+
+        // Mostra o link na tela e torna-o clicável
+        resultado.innerHTML = `Link sorteado: <a href="${linkSorteado}" target="_blank">${linkSorteado}</a>`;
+    }
+</script>
+
+</body>
+</html>
