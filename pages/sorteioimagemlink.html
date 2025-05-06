@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorteio de Link com Imagem Clicável</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #imagem {
+      margin-top: 20px;
+      max-width: 300px;
+      height: auto;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Sorteio de Link com Imagem Clicável</h1>
+  <p>Clique no botão abaixo para sortear um link com imagem.</p>
+  <button onclick="sortearLink()">Sortear Link</button>
+  <a id="imagemResultado" href="" target="_blank">
+    <img id="imagem" src="" alt="Imagem do sorteio" />
+  </a>
+</div>
+
+<script>
+  function sortearLink() {
+    const linksComImagens = [
+      {
+        link: "https://www.google.com/search?q=javascript",
+        imagem: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+      },
+      {
+        link: "https://www.google.com/search?q=html",
+        imagem: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+      },
+      {
+        link: "https://www.google.com/search?q=css",
+        imagem: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
+      },
+      {
+        link: "https://www.google.com/search?q=react",
+        imagem: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+      },
+      {
+        link: "https://www.google.com/search?q=programação",
+        imagem: "https://upload.wikimedia.org/wikipedia/commons/1/18/Code-icon.svg"
+      }
+    ];
+
+    const indice = Math.floor(Math.random() * linksComImagens.length);
+    const sorteio = linksComImagens[indice];
+
+    const imagemResultado = document.getElementById("imagemResultado");
+    const imagem = document.getElementById("imagem");
+
+    imagemResultado.href = sorteio.link;
+    imagem.src = sorteio.imagem;
+    imagem.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
