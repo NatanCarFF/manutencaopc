@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANUTENÇÃO DE COMPUTADOR</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            padding: 20px 0;
+            margin: 0;
+            background-color: black;
+            color: green;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .matrix span {
+            position: absolute;
+            top: -50px;
+            font-size: 2rem;
+            color: lime;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>MANUTENÇÃO DE COMPUTADOR</h1>
+    <div class="matrix"></div>
+    <script>
+        const matrix = document.querySelector('.matrix');
+        const alphabet = ['💻', '🖥️', '🖱️', '⌨️', '🎧', '⚙️', '🛠️', '💾', '🔧'];
+
+        function createLetter() {
+            const letter = document.createElement('span');
+            letter.innerText = alphabet[Math.floor(Math.random() * alphabet.length)];
+            letter.style.left = `${Math.random() * 100}vw`; // Aleatório na largura da tela
+
+            // Define a duração e o atraso para a animação
+            const animationDuration = Math.random() * 5 + 5; // Entre 5 e 10 segundos
+            const animationDelay = Math.random() * 5; // Atraso aleatório de 0 a 5 segundos
+
+            letter.style.animationDuration = `${animationDuration}s`;
+            letter.style.animationDelay = `${animationDelay}s`;
+
+            matrix.appendChild(letter);
+
+            // Remove o elemento da tela após a animação
+            letter.addEventListener('animationend', () => {
+                letter.remove();
+            });
+        }
+
+        // Cria uma nova letra a cada 100ms
+        setInterval(createLetter, 100);
+    </script>
+</body>
+</html>
